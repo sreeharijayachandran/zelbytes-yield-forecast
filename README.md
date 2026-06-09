@@ -44,3 +44,19 @@ zelbytes-yield-forecast/
 ├── README.md
 └── .gitignore
 ```
+## Dataset Columns
+
+| Column | Description | Unit |
+|----------|------------|------|
+| timestamp | Date and time of sensor reading | Datetime |
+| temperature_c | Polyhouse temperature | °C |
+| humidity_pct | Relative humidity inside polyhouse | % |
+| co2_ppm | Carbon dioxide concentration | ppm |
+| yield_kg | Mushroom yield harvested | kg |
+
+### Dataset Notes
+
+- Temperature is measured in degrees Celsius.
+- Humidity is measured as relative humidity percentage.
+- CO₂ concentration is measured in parts per million (ppm).
+- Yield represents the harvested mushroom weight in kilograms.
