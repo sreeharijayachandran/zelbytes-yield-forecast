@@ -1,16 +1,10 @@
-from datetime import date
-
-sample_reading = {
-    "date": date.today().isoformat(),
-    "temperature_c": 22.4,
-    "humidity_pct": 88.5,
-    "co2_ppm": 950,
-    "yield_kg": 12.3,
-}
-
-print("Polyhouse sensor snapshot:")
-for key, value in sample_reading.items():
-    print(f"{key}: {value}")
-
-assert sample_reading["humidity_pct"] > 80, "Oyster mushrooms need high humidity"
-print("Environment OK.")
+import pandas as pd
+import numpy as np
+data = np.array(
+    [(1, 2, 3), (4, 5, 6), (7, 8, 9)],
+    dtype=[("a", "i4"), ("b", "i8"), ("c", "f8")],
+)
+df3 = pd.DataFrame(data, columns=["a", "b", "c"])
+print(df3)
+print(df3.pop("a"))
+print(df3)
