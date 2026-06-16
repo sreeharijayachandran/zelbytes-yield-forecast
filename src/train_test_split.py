@@ -10,7 +10,7 @@ train, test = df.iloc[:split_idx], df.iloc[split_idx:]
 
 scaler = MinMaxScaler()
 X_train = scaler.fit_transform(train[feature])
-X_test = scaler.transform(test[feature])
+X_test = scaler.transform(test[feature]) 
 y_train = train["yield"].values
 y_test = test["yield"].values
 
@@ -28,3 +28,4 @@ test.to_parquet(
     "data/processed/test.parquet",
     index=False
 )
+print(test.iloc[1,2])

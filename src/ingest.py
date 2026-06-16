@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-RAW = Path("data/raw/polyhouse_sensors.csv")
+RAW = Path("data/raw/polyhouse_sensors1.csv")
 INTERIM = Path("data/interim")
 INTERIM.mkdir(parents=True, exist_ok=True)
 
@@ -9,10 +9,10 @@ df = pd.read_csv(
     RAW,
     parse_dates=["timestamp"],
     dtype={
-        "temperature_c": "float64",
-        "humidity_pct": "float64",
-        "co2_ppm": "float64",
-        "yield_kg": "float64",
+        "temperature": "float64",
+        "humidity": "float64",
+        "CO2": "float64",
+        "yield": "float64",
     },
 )
 

@@ -1,10 +1,11 @@
+import joblib
 import pandas as pd
-import numpy as np
-data = np.array(
-    [(1, 2, 3), (4, 5, 6), (7, 8, 9)],
-    dtype=[("a", "i4"), ("b", "i8"), ("c", "f8")],
-)
-df3 = pd.DataFrame(data, columns=["a", "b", "c"])
-print(df3)
-print(df3.pop("a"))
-print(df3)
+import matplotlib.pyplot as plt
+
+df = pd.read_parquet("data/interim/02_cleaned.parquet")
+features = ["temperature", "humidity", "CO2", "yield"]
+print(df.head())
+scaler = joblib.load("models/minmax_scaler.joblib")
+
+print(scaler.data_min_)
+print(scaler)
