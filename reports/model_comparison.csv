@@ -1,0 +1,4 @@
+model,test_mae,test_r2
+Linear Regression,0.09,0.696
+Random Forest,0.09,0.707
+Tuned Random Forest,0.081,0.737
