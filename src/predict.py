@@ -19,7 +19,6 @@ def predict_yield(temperature_c: float,
         columns=_feature_cols
     )
 
-    print("Input:", row)
 
     return float(_model.predict(row)[0])
 
