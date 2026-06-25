@@ -23,12 +23,24 @@ venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
+## Live Demo
 
-### Run Smoke Test
+Streamlit Application:
+
+
+
+### Run Locally
 
 ```bash
-python src/smoke_test.py
+pip install -r requirements.txt
+streamlit run app.py
 ```
+
+### Model
+
+* Champion Model: Tuned Random Forest Regressor
+* Features: Temperature, Humidity, CO₂
+* Metric Used: MAE, RMSE, R²
 
 ## Folder Structure
 
@@ -106,3 +118,24 @@ zelbytes-yield-forecast/
 - A chronological split was used to simulate real-world forecasting conditions.
 - Data leakage was prevented by fitting the Min-Max Scaler only on training data.
 - Training and testing datasets were saved as:
+
+
+### Model Training
+| Model               | MAE (kg)  | RMSE (kg) | R²        |
+| ------------------- | --------- | --------- | --------- |
+| Linear Regression   | 0.09      | 0.12      | 0.696     |
+| Random Forest       | 0.09      | 0.12      | 0.707     |
+| Tuned Random Forest | 0.081     | 0.111     | 0.737     |
+
+- Trained and evaluated Linear Regression and Random Forest models for mushroom yield prediction.
+- Performance was measured using MAE, RMSE, and R² metrics.
+- TimeSeriesSplit cross-validation was used to assess model stability.
+- GridSearchCV was applied to optimize Random Forest hyperparameters.
+- The Tuned Random Forest achieved the best performance and was selected as the final model.
+# Best Hyperparameters
+| Parameter        | Value |
+| ---------------- | ----- |
+| n_estimators     | 200   |
+| max_depth        | None  |
+| min_samples_leaf | 3     |
+
