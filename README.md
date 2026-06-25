@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 Streamlit Application:
 
-
+https://zelbytes-yield-forecast-jgzip4ge3puipmrbv42mce.streamlit.app/
 
 ### Run Locally
 
