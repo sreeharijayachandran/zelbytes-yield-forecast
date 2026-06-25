@@ -1,15 +1,23 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from predict import predict_yield
 import matplotlib.pyplot as plt
 from joblib import load
 
-@st.cache_resource
-def load_model():
-    return load("models/random_forest_tuned.joblib")
+try:
+    from predict import predict_yield
 
-model = load_model()
+    @st.cache_resource
+    def load_model():
+        return load("models/random_forest_tuned.joblib")
+
+    model = load_model()
+
+except FileNotFoundError:
+    st.error(
+        "Model file not found. Please verify deployment artifacts."
+    )
+    st.stop()
 
 @st.cache_data
 def cached_predict(temperature, humidity, co2):
@@ -53,10 +61,17 @@ with col2:
 
 if st.button("Predict Yield"):
 
- prediction = cached_predict(temperature,humidity,co2)
+    with st.spinner("Generating prediction..."):
+        prediction = cached_predict(
+            temperature,
+            humidity,
+            co2
+        )
 
- st.metric("Predicted Yield",f"{prediction:.2f} kg")
-
+    st.metric(
+        "Predicted Yield",
+        f"{prediction:.2f} kg"
+    )
 
 col3, col4, col5,col6= st.columns(4)
 with col3:
